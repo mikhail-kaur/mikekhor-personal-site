@@ -19,7 +19,7 @@ export type BlogPost = {
 };
 
 export const getBlogPosts = async (category) => {
-  const context = require.context("../content", true, /\.md$/);
+  const context = require.context("../content", true, /\.(md|svg)$/);
   const metadataContext = require.context(
     "../content",
     true,
@@ -29,14 +29,12 @@ export const getBlogPosts = async (category) => {
   const posts = await Promise.all(
     context
       .keys()
-      .filter((key) => key.startsWith(`./${category}/`))
+      .filter((key) => key.startsWith(`./${category}/`) && key.endsWith('.md'))
       .map(async (key) => {
         // Get the content URL and fetch the actual content
         const contentUrl = context(key);
         const contentResponse = await fetch(contentUrl);
         const content = await contentResponse.text();
-
-        console.log("key", key);
 
         const category = key.split("/")[1];
         const postId = key.split("/")[2];
@@ -59,8 +57,6 @@ export const getBlogPosts = async (category) => {
         }
       })
   );
-
-  console.log("posts", posts);
 
   return posts.filter(Boolean).sort((a, b) => b.timestamp - a.timestamp);
 };
