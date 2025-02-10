@@ -1,39 +1,60 @@
-import React, { useState, useEffect } from 'react';
-import { Container, Typography, Card, CardContent, Grid, CardMedia } from '@mui/material';
-import { loadBlogPosts } from '../utils/blogUtils';
+import React from 'react';
+import { Container, Typography, Card, CardContent, Grid } from '@mui/material';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import rehypeRaw from 'rehype-raw';
 
-function ACappellaBlog() {
-  const [posts, setPosts] = useState([]);
+const ACappellaBlog = () => {
+  const posts = [
+    {
+      title: 'A Cappella Arrangement Techniques',
+      date: '2025-02-10',
+      subtitle: 'Tips and tricks for creating engaging vocal arrangements',
+      content: `
+# A Cappella Arrangement Techniques
 
-  useEffect(() => {
-    const fetchPosts = async () => {
-      const blogPosts = await loadBlogPosts('acappella');
-      setPosts(blogPosts);
-    };
-    fetchPosts();
-  }, []);
+Creating effective a cappella arrangements requires understanding of both music theory and vocal capabilities. Here's my approach to arranging popular songs for vocal groups.
+
+## The Basics of Arrangement
+
+When arranging for a cappella, we need to consider:
+- Vocal ranges
+- Part distribution
+- Rhythm section simulation
+- Dynamic balance
+      `,
+      preview_image: null
+    },
+    {
+      title: 'Building Your A Cappella Group',
+      date: '2025-02-09',
+      subtitle: 'Essential tips for starting and managing a vocal ensemble',
+      content: `
+# Building Your A Cappella Group
+
+Starting an a cappella group can be challenging but rewarding. Here are some key considerations for success.
+
+## Finding Your Members
+
+The key to a great a cappella group is finding the right mix of voices and personalities.
+      `,
+      preview_image: null
+    }
+  ];
 
   return (
     <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
       <Typography variant="h4" component="h1" gutterBottom>
         A Cappella Adventures
       </Typography>
+      <Typography variant="body1" color="text.secondary" paragraph>
+        Stories and experiences from my a cappella singing journey
+      </Typography>
+      
       <Grid container spacing={3}>
         {posts.map((post, index) => (
           <Grid item xs={12} key={index}>
             <Card>
-              {post.preview_image && (
-                <CardMedia
-                  component="img"
-                  height="200"
-                  image={post.preview_image}
-                  alt={post.title}
-                  sx={{ objectFit: 'cover' }}
-                />
-              )}
               <CardContent>
                 <Typography variant="h6" gutterBottom>
                   {post.title}
@@ -49,7 +70,7 @@ function ACappellaBlog() {
                     remarkPlugins={[remarkGfm]}
                     rehypePlugins={[rehypeRaw]}
                   >
-                    {post.content.split('\n').slice(0, 3).join('\n')}...
+                    {post.content}
                   </ReactMarkdown>
                 </div>
               </CardContent>
@@ -59,6 +80,6 @@ function ACappellaBlog() {
       </Grid>
     </Container>
   );
-}
+};
 
 export default ACappellaBlog;
