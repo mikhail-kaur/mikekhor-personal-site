@@ -28,7 +28,8 @@ function App() {
       <Navigation />
       <Routes>
         <Route path="/" element={<MLBlog />} />
-        <Route path="/ml/:postId" element={<MLBlog showPost />} />
+        <Route path="/machinelearning" element={<MLBlog />} />
+        <Route path="/machinelearning/:postId" element={<MLBlog showPost />} />
         <Route path="/acappella" element={<ACappellaBlog />} />
         <Route path="/acappella/:postId" element={<ACappellaBlog showPost />} />
       </Routes>

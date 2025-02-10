@@ -10,6 +10,8 @@ declare const require: {
 };
 
 export type BlogPost = {
+  category: string;
+  id: string;
   title: string;
   subtitle: string;
   timestamp: number;
@@ -34,6 +36,11 @@ export const getBlogPosts = async (category) => {
         const contentResponse = await fetch(contentUrl);
         const content = await contentResponse.text();
 
+        console.log("key", key);
+
+        const category = key.split("/")[1];
+        const postId = key.split("/")[2];
+
         // Get the corresponding metadata file
         const dir = key.substring(0, key.lastIndexOf("/") + 1);
         const metadataKey = dir + "metadata.json";
@@ -43,6 +50,8 @@ export const getBlogPosts = async (category) => {
           return {
             ...metadata,
             content,
+            id: postId,
+            category,
           };
         } catch (error) {
           console.error("Error parsing metadata for", key, ":", error);
@@ -50,6 +59,8 @@ export const getBlogPosts = async (category) => {
         }
       })
   );
+
+  console.log("posts", posts);
 
   return posts.filter(Boolean).sort((a, b) => b.timestamp - a.timestamp);
 };
