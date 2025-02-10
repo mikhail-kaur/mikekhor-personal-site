@@ -14,11 +14,23 @@ const theme = createTheme({
       default: "#f5f5f5",
     },
     primary: {
-      main: "#2196f3",
+      main: "#757575",
     },
   },
   typography: {
     fontFamily: "Inter, sans-serif",
+  },
+  components: {
+    MuiButton: {
+      styleOverrides: {
+        contained: {
+          backgroundColor: "#757575",
+          "&:hover": {
+            backgroundColor: "#616161",
+          },
+        },
+      },
+    },
   },
 });
 
