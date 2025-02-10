@@ -11,28 +11,15 @@ function Navigation() {
             variant="h6" 
             component={RouterLink} 
             to="/" 
-            sx={{ 
-              textDecoration: 'none', 
-              color: 'inherit',
-              fontWeight: 500
-            }}
+            sx={{ textDecoration: 'none', color: 'inherit' }}
           >
             Mike Khor
           </Typography>
           <div>
-            <Button 
-              component={RouterLink} 
-              to="/" 
-              color="inherit"
-              sx={{ mr: 2 }}
-            >
+            <Button component={RouterLink} to="/" color="inherit">
               Machine Learning
             </Button>
-            <Button 
-              component={RouterLink} 
-              to="/acappella" 
-              color="inherit"
-            >
+            <Button component={RouterLink} to="/acappella" color="inherit">
               A Cappella
             </Button>
           </div>
