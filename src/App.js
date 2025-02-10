@@ -1,23 +1,23 @@
-import React from 'react';
-import { Routes, Route } from 'react-router-dom';
-import { ThemeProvider, createTheme } from '@mui/material/styles';
-import CssBaseline from '@mui/material/CssBaseline';
-import Navigation from './components/Navigation';
-import MLBlog from './pages/MLBlog';
-import ACappellaBlog from './pages/ACappellaBlog';
+import React from "react";
+import { Routes, Route } from "react-router-dom";
+import { ThemeProvider, createTheme } from "@mui/material/styles";
+import CssBaseline from "@mui/material/CssBaseline";
+import Navigation from "./components/Navigation";
+import MLBlog from "./pages/MLBlog.tsx";
+import ACappellaBlog from "./pages/ACappellaBlog.tsx";
 
 const theme = createTheme({
   palette: {
-    mode: 'light',
+    mode: "light",
     background: {
-      default: '#f5f5f5',
+      default: "#f5f5f5",
     },
     primary: {
-      main: '#2196f3',
+      main: "#2196f3",
     },
   },
   typography: {
-    fontFamily: 'Inter, sans-serif',
+    fontFamily: "Inter, sans-serif",
   },
 });
 
