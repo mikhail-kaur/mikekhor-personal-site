@@ -6,47 +6,33 @@ function MLBlog() {
     {
       title: 'Getting Started with Deep Learning',
       date: '2025-02-10',
-      summary: 'An introduction to deep learning concepts and practical applications in computer vision and natural language processing.',
+      summary: 'An introduction to deep learning concepts and practical applications in modern AI systems.',
     },
-    // Add more posts here as needed
+    {
+      title: 'Natural Language Processing Projects',
+      date: '2025-02-09',
+      summary: 'Exploring various NLP projects and their impact on AI applications.',
+    },
   ];
 
   return (
     <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
-      <Typography 
-        variant="h4" 
-        component="h1" 
-        gutterBottom
-        sx={{ 
-          fontWeight: 600,
-          mb: 4 
-        }}
-      >
+      <Typography variant="h4" component="h1" gutterBottom>
         Machine Learning Journey
       </Typography>
+      <Typography variant="body1" color="text.secondary" paragraph>
+        Exploring the fascinating world of artificial intelligence and machine learning
+      </Typography>
+      
       <Grid container spacing={3}>
         {posts.map((post, index) => (
           <Grid item xs={12} key={index}>
-            <Card sx={{ 
-              '&:hover': {
-                boxShadow: 6,
-                transition: 'box-shadow 0.3s ease-in-out'
-              }
-            }}>
+            <Card>
               <CardContent>
-                <Typography 
-                  variant="h6" 
-                  gutterBottom
-                  sx={{ fontWeight: 500 }}
-                >
+                <Typography variant="h6" gutterBottom>
                   {post.title}
                 </Typography>
-                <Typography 
-                  variant="subtitle2" 
-                  color="text.secondary" 
-                  gutterBottom
-                  sx={{ mb: 2 }}
-                >
+                <Typography variant="subtitle2" color="text.secondary" gutterBottom>
                   {post.date}
                 </Typography>
                 <Typography variant="body1">
