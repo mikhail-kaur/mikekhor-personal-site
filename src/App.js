@@ -3,7 +3,6 @@ import { Routes, Route } from "react-router-dom";
 import {
   ThemeProvider,
   createTheme,
-  useMediaQuery,
 } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import { Box } from "@mui/material";

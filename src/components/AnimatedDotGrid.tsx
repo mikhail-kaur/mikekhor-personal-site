@@ -100,7 +100,7 @@ const AnimatedDotGrid: React.FC<AnimatedDotGridProps> = ({
     ));
     
     return maxDistance;
-  }, [photoRef]);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   // Start new ripple
   const startRipple = useCallback(() => {
@@ -123,7 +123,7 @@ const AnimatedDotGrid: React.FC<AnimatedDotGridProps> = ({
     if (ripplesRef.current.length > 3) {
       ripplesRef.current.shift();
     }
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   // Main animation loop using Canvas
   useEffect(() => {
