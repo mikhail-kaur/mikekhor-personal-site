@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Container, Typography } from "@mui/material";
+import { Container, Typography, Box } from "@mui/material";
 import { useParams, useNavigate } from "react-router-dom";
 import { getBlogPosts, BlogPost } from "../utils/blogUtils.ts";
 import BlogPostScroll from "./BlogPostScroll.tsx";
@@ -28,7 +28,7 @@ const BlogPage = ({ title, subtitle, category, showPost }: BlogPageProps) => {
   const singlePost = showPost && postId ? posts.find((p) => p.id === postId) : null;
 
   return (
-    <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
+    <Container maxWidth="lg" sx={{ mt: 4, mb: 4, flex: 1 }}>
       <Typography variant="h4" component="h1" gutterBottom>
         {title}
       </Typography>
