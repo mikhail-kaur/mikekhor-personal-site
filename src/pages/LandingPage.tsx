@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Container, Typography, Box, Button, Stack, Grid, Card, CardContent } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { styled } from "@mui/material/styles";
@@ -6,6 +6,11 @@ import CodeIcon from "@mui/icons-material/Code";
 import CloudIcon from "@mui/icons-material/Cloud";
 import PsychologyIcon from "@mui/icons-material/Psychology";
 import RocketLaunchIcon from "@mui/icons-material/RocketLaunch";
+import SmartToyIcon from "@mui/icons-material/SmartToy";
+import WebIcon from "@mui/icons-material/Web";
+import FavoriteIcon from "@mui/icons-material/Favorite";
+import LocalCafeIcon from "@mui/icons-material/LocalCafe";
+import AnimatedDotGrid from "../components/AnimatedDotGrid.tsx";
 
 const HeroSection = styled(Box)(({ theme }) => ({
   minHeight: '100vh',
@@ -130,9 +135,11 @@ const TypewriterText = ({ text, onComplete }: { text: string; onComplete?: () =>
   );
 };
 
+
 const LandingPage = () => {
   const navigate = useNavigate();
   const [scrolled, setScrolled] = useState(false);
+  const photoRef = useRef<HTMLImageElement>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -167,15 +174,56 @@ const LandingPage = () => {
     }
   ];
 
+  const projects = [
+    {
+      icon: <SmartToyIcon sx={{ fontSize: 40, color: '#62a0f0ff' }} />,
+      title: "LLM Systems at Culture Biosciences",
+      description: "Built flexible data retrieval system for bioreactors with document extraction, generative SQL queries, and chatbot for guided experimental design",
+      tech: "Python, OpenAI, Google GenAI",
+      link: "https://www.culturebiosciences.com/"
+    },
+    {
+      icon: <WebIcon sx={{ fontSize: 40, color: '#e97853ff' }} />,
+      title: "Stratyx Full-Stack Platform",
+      description: "Led development of cloud bioreactor product including hardware runtime, touchscreen interface, and cloud jobs",
+      tech: "React, Python, Docker, AWS, CircleCI, GraphQL",
+      link: "https://www.culturebiosciences.com/"
+    },
+    {
+      icon: <FavoriteIcon sx={{ fontSize: 40, color: '#f36d63ff' }} />,
+      title: "RECO: Recovery Companion",
+      description: "LLM-powered chatbot for post-discharge heart-failure monitoring with synthetic patient dialogues and PDF summary generation",
+      tech: "LangChain, GPT-4o, PostgreSQL",
+      link: "https://github.com/recoverycompanion/reco/"
+    },
+    {
+      icon: <LocalCafeIcon sx={{ fontSize: 40, color: '#40a2eeff' }} />,
+      title: "CalHacks: CodeQuery",
+      description: "Hackathon project showcasing rapid prototyping and innovative problem-solving in a competitive environment",
+      tech: "Full-Stack Development, APIs",
+      link: "https://github.com/mike-khor/BobBuilderGPT"
+    }
+  ];
+
   return (
     <Box>
       {/* Hero Section */}
       <HeroSection>
-        <Container maxWidth="lg">
+        <AnimatedDotGrid
+          photoRef={photoRef}
+          interval={5000}
+          speed={500}
+          dotSpacing={20}
+          dotSize={5}
+          displacementDistance={30}
+          intensityMultiplier={0.15}
+        />
+        <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 2 }}>
           <ScrollableContent scrolled={scrolled}>
             <Grid container spacing={4} alignItems="center" justifyContent="center">
               <Grid item xs={12} md={5} textAlign="center">
                 <ProfileImage
+                  ref={photoRef}
                   src="/mike_photo.png"
                   alt="Mike Khor"
                   onError={(e) => {
@@ -258,8 +306,84 @@ const LandingPage = () => {
         </Container>
       </Box>
 
-      {/* Blog Navigation Section */}
+      {/* Projects Section */}
       <Box sx={{ py: 8, backgroundColor: '#f3f5f7' }}>
+        <Container maxWidth="lg">
+          <Typography
+            variant="h3"
+            textAlign="center"
+            sx={{
+              mb: 6,
+              color: 'text.primary',
+              fontWeight: 300,
+              fontSize: { xs: '2rem', md: '3rem' }
+            }}
+          >
+            Notable Projects
+          </Typography>
+          <Grid container spacing={4}>
+            {projects.map((project, index) => (
+              <Grid item xs={12} md={6} key={index}>
+                <HighlightCard sx={{ height: '100%' }}>
+                  <CardContent sx={{ p: 4 }}>
+                    <Box sx={{ display: 'flex', alignItems: 'flex-start', mb: 3 }}>
+                      <Box sx={{ mr: 3, mt: 0.5 }}>
+                        <Box
+                          onClick={() => window.open(project.link, '_blank', 'noopener,noreferrer')}
+                          sx={{
+                            display: 'inline-block',
+                            cursor: 'pointer',
+                            '&:hover': {
+                              transform: 'scale(1.1)',
+                            },
+                            transition: 'transform 0.2s ease',
+                          }}
+                        >
+                          {project.icon}
+                        </Box>
+                      </Box>
+                      <Box sx={{ flex: 1 }}>
+                        <Typography 
+                          variant="h5" 
+                          onClick={() => window.open(project.link, '_blank', 'noopener,noreferrer')}
+                          sx={{ 
+                            mb: 2, 
+                            fontWeight: 600,
+                            cursor: 'pointer',
+                            '&:hover': {
+                              color: 'primary.main',
+                              textDecoration: 'underline',
+                            },
+                            transition: 'color 0.2s ease',
+                          }}
+                        >
+                          {project.title}
+                        </Typography>
+                        <Typography variant="body1" sx={{ mb: 3, lineHeight: 1.6 }}>
+                          {project.description}
+                        </Typography>
+                        <Typography
+                          variant="body2"
+                          sx={{
+                            color: 'text.secondary',
+                            fontStyle: 'italic',
+                            fontWeight: 500
+                          }}
+                        >
+                          {project.tech}
+                        </Typography>
+                      </Box>
+                    </Box>
+                  </CardContent>
+                </HighlightCard>
+              </Grid>
+            ))}
+          </Grid>
+        </Container>
+      </Box>
+
+      {/* Blog Navigation Section */}
+      <Box sx={{ py: 8, backgroundColor: '#ffffff' }}>
         <Container maxWidth="sm">
           <Typography
             variant="h4"
