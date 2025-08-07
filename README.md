@@ -1,1 +1,0 @@
-# mikekhor-personal-site
