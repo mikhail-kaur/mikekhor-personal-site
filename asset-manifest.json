@@ -1,11 +1,11 @@
 {
   "files": {
-    "main.js": "./static/js/main.6cb3ea9e.js",
-    "index.html": "./index.html",
-    "static/media/content.md": "./static/media/content.e1198495b25121cc02a0.md",
-    "main.6cb3ea9e.js.map": "./static/js/main.6cb3ea9e.js.map"
+    "main.js": "/mikekhor-personal-site/static/js/main.e20265bb.js",
+    "index.html": "/mikekhor-personal-site/index.html",
+    "static/media/content.md": "/mikekhor-personal-site/static/media/content.e1198495b25121cc02a0.md",
+    "main.e20265bb.js.map": "/mikekhor-personal-site/static/js/main.e20265bb.js.map"
   },
   "entrypoints": [
-    "static/js/main.6cb3ea9e.js"
+    "static/js/main.e20265bb.js"
   ]
 }
