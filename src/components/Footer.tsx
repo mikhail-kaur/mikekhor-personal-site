@@ -6,10 +6,10 @@ import EmailIcon from '@mui/icons-material/Email';
 
 const Footer = () => {
   return (
-    <Box 
+    <Box
       component="footer"
-      sx={{ 
-        py: 4, 
+      sx={{
+        py: 4,
         backgroundColor: '#c1cad6',
         display: 'flex',
         flexDirection: 'column',
@@ -78,7 +78,26 @@ const Footer = () => {
           textAlign: 'center',
         }}
       >
-        Built with Claude Code
+        Website built with Claude Code {'('}
+        <Typography
+          component="a"
+          href="https://github.com/anthropics/claude-code"
+          target="_blank"
+          rel="noopener noreferrer"
+          variant="caption"
+          sx={{
+            color: '#212831',
+            opacity: 0.7,
+            fontSize: '0.75rem',
+            textDecoration: 'underline',
+            '&:hover': {
+              opacity: 1,
+            },
+          }}
+        >
+          repo
+        </Typography>
+        {')'}
       </Typography>
     </Box>
   );
