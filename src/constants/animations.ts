@@ -1,0 +1,26 @@
+export const ANIMATION_CONFIG = {
+  TYPEWRITER_SPEED: 50,
+  FADE_IN_DURATION: 800,
+  FADE_IN_DELAY: {
+    SUBTITLE: 200,
+    DESCRIPTION: 400,
+  },
+  DOT_GRID: {
+    INTERVAL: 3000,
+    SPEED: 500,
+    DOT_SPACING: 20,
+    DOT_SIZE: 5,
+    DISPLACEMENT_DISTANCE: 30,
+    INTENSITY_MULTIPLIER: 0.15,
+  },
+  RIPPLE: {
+    WIDTH: 60,
+    MAX_CONCURRENT: 3,
+  },
+} as const;
+
+export const BREAKPOINTS = {
+  MOBILE: 'xs',
+  TABLET: 'md',
+  DESKTOP: 'lg',
+} as const;

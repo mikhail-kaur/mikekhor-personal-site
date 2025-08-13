@@ -1,0 +1,106 @@
+import React from 'react';
+import { Box, Stack, IconButton, Typography } from '@mui/material';
+import GitHubIcon from '@mui/icons-material/GitHub';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import EmailIcon from '@mui/icons-material/Email';
+
+const Footer = () => {
+  return (
+    <Box
+      component="footer"
+      sx={{
+        py: 4,
+        backgroundColor: '#c1cad6',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+        mt: 'auto' // Push footer to bottom when used in flex container
+      }}
+    >
+      <Stack direction="row" spacing={3} sx={{ mb: 2 }}>
+        <IconButton
+          component="a"
+          href="https://github.com/mike-khor"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="GitHub Profile"
+          sx={{
+            color: '#212831',
+            '&:hover': {
+              color: '#6c6ea0',
+              transform: 'scale(1.1)',
+            },
+            transition: 'all 0.2s ease',
+          }}
+        >
+          <GitHubIcon sx={{ fontSize: 28 }} />
+        </IconButton>
+        <IconButton
+          component="a"
+          href="https://linkedin.com/in/MichaelEngHoeKhor"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="LinkedIn Profile"
+          sx={{
+            color: '#212831',
+            '&:hover': {
+              color: '#6c6ea0',
+              transform: 'scale(1.1)',
+            },
+            transition: 'all 0.2s ease',
+          }}
+        >
+          <LinkedInIcon sx={{ fontSize: 28 }} />
+        </IconButton>
+        <IconButton
+          component="a"
+          href="mailto:khorenghoe@gmail.com"
+          aria-label="Email"
+          sx={{
+            color: '#212831',
+            '&:hover': {
+              color: '#6c6ea0',
+              transform: 'scale(1.1)',
+            },
+            transition: 'all 0.2s ease',
+          }}
+        >
+          <EmailIcon sx={{ fontSize: 28 }} />
+        </IconButton>
+      </Stack>
+      <Typography
+        variant="caption"
+        sx={{
+          color: '#212831',
+          opacity: 0.7,
+          fontSize: '0.75rem',
+          textAlign: 'center',
+        }}
+      >
+        Website built with Claude Code {'('}
+        <Typography
+          component="a"
+          href="https://github.com/anthropics/claude-code"
+          target="_blank"
+          rel="noopener noreferrer"
+          variant="caption"
+          sx={{
+            color: '#212831',
+            opacity: 0.7,
+            fontSize: '0.75rem',
+            textDecoration: 'underline',
+            '&:hover': {
+              opacity: 1,
+            },
+          }}
+        >
+          repo
+        </Typography>
+        {')'}
+      </Typography>
+    </Box>
+  );
+};
+
+export default Footer;
