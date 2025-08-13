@@ -1,6 +1,6 @@
 import React from "react";
 import { CardContent, Typography, Grid, Card } from "@mui/material";
-import { BlogPost } from "../utils/blogUtils";
+import { BlogPost } from "../types";
 
 export default function BlogPostScroll({ posts, category, navigate }: { posts: BlogPost[], category: string, navigate: (path: string) => void }) {
   return (

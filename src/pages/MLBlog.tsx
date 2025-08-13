@@ -1,5 +1,5 @@
 import React from "react";
-import BlogPage from "../components/BlogPage.tsx";
+import BlogPage from "../components/BlogPage";
 
 const MLBlog = ({ showPost }: { showPost?: boolean }) => (
   <BlogPage

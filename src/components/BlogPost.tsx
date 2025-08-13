@@ -3,8 +3,13 @@ import { Container, Typography, Paper } from '@mui/material';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import rehypeRaw from 'rehype-raw';
+import { BlogPost as BlogPostType } from '../types';
 
-const BlogPost = ({ post }) => {
+interface BlogPostProps {
+  post?: BlogPostType;
+}
+
+const BlogPost: React.FC<BlogPostProps> = ({ post }) => {
   if (!post) {
     return (
       <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>

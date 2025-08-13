@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Container, Typography } from "@mui/material";
 import { useParams, useNavigate } from "react-router-dom";
-import { getBlogPosts, BlogPost } from "../utils/blogUtils.ts";
-import BlogPostScroll from "./BlogPostScroll.tsx";
-import BlogSinglePage from "./BlogSinglePage.tsx";
+import { getBlogPosts } from "../utils/blogUtils";
+import { BlogPost } from "../types";
+import BlogPostScroll from "./BlogPostScroll";
+import BlogSinglePage from "./BlogSinglePage";
 
 type BlogPageProps = {
   title: string;

@@ -10,7 +10,7 @@ import SmartToyIcon from "@mui/icons-material/SmartToy";
 import WebIcon from "@mui/icons-material/Web";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import LocalCafeIcon from "@mui/icons-material/LocalCafe";
-import AnimatedDotGrid from "../components/AnimatedDotGrid.tsx";
+import AnimatedDotGrid from "../components/AnimatedDotGrid";
 
 const HeroSection = styled(Box)(({ theme }) => ({
   minHeight: '100vh',
@@ -85,7 +85,7 @@ const TypewriterText = ({ text, onComplete }: { text: string; onComplete?: () =>
       const timer = setTimeout(() => {
         setDisplayText(text.slice(0, currentIndex + 1));
         setCurrentIndex(currentIndex + 1);
-      }, 100); // Typing speed
+      }, 50); // Typing speed
       return () => clearTimeout(timer);
     } else if (!isComplete) {
       setIsComplete(true);
@@ -139,6 +139,7 @@ const TypewriterText = ({ text, onComplete }: { text: string; onComplete?: () =>
 const LandingPage = () => {
   const navigate = useNavigate();
   const [scrolled, setScrolled] = useState(false);
+  const [typewriterComplete, setTypewriterComplete] = useState(false);
   const photoRef = useRef<HTMLImageElement>(null);
 
   useEffect(() => {
@@ -211,7 +212,7 @@ const LandingPage = () => {
       <HeroSection>
         <AnimatedDotGrid
           photoRef={photoRef}
-          interval={5000}
+          interval={3000}
           speed={500}
           dotSpacing={20}
           dotSize={5}
@@ -235,7 +236,10 @@ const LandingPage = () => {
               <Grid item xs={12} md={7}>
                 <Box textAlign={{ xs: 'center', md: 'left' }}>
                   <WelcomeText variant="h1">
-                    <TypewriterText text="Hi, I'm Mike Khor" />
+                    <TypewriterText
+                      text="Hi, I'm Mike Khor"
+                      onComplete={() => setTypewriterComplete(true)}
+                    />
                   </WelcomeText>
                   <Typography
                     variant="h5"
@@ -243,7 +247,11 @@ const LandingPage = () => {
                       mt: 2,
                       color: 'text.secondary',
                       fontWeight: 300,
-                      fontSize: { xs: '1.2rem', md: '1.5rem' }
+                      fontSize: { xs: '1.2rem', md: '1.5rem' },
+                      opacity: typewriterComplete ? 1 : 0,
+                      transform: typewriterComplete ? 'translateY(0)' : 'translateY(20px)',
+                      transition: 'opacity 0.8s ease-out, transform 0.8s ease-out',
+                      transitionDelay: '0.2s'
                     }}
                   >
                     Machine Learning Engineer & Full-Stack Developer
@@ -256,7 +264,11 @@ const LandingPage = () => {
                       fontSize: '1.1rem',
                       lineHeight: 1.6,
                       maxWidth: '500px',
-                      mx: { xs: 'auto', md: 0 }
+                      mx: { xs: 'auto', md: 0 },
+                      opacity: typewriterComplete ? 1 : 0,
+                      transform: typewriterComplete ? 'translateY(0)' : 'translateY(20px)',
+                      transition: 'opacity 0.8s ease-out, transform 0.8s ease-out',
+                      transitionDelay: '0.4s'
                     }}
                   >
                     I research and ship production ML and web systems from concept to product,
@@ -343,11 +355,11 @@ const LandingPage = () => {
                         </Box>
                       </Box>
                       <Box sx={{ flex: 1 }}>
-                        <Typography 
-                          variant="h5" 
+                        <Typography
+                          variant="h5"
                           onClick={() => window.open(project.link, '_blank', 'noopener,noreferrer')}
-                          sx={{ 
-                            mb: 2, 
+                          sx={{
+                            mb: 2,
                             fontWeight: 600,
                             cursor: 'pointer',
                             '&:hover': {

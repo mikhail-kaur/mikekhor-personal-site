@@ -3,7 +3,7 @@ import { Typography, Container } from "@mui/material";
 import ReactMarkdown from "react-markdown";
 import rehypeRaw from "rehype-raw";
 import remarkGfm from "remark-gfm";
-import { BlogPost } from "../utils/blogUtils";
+import { BlogPost } from "../types";
 
 export default function BlogSinglePage({ post }: { post: BlogPost }) {
   return (

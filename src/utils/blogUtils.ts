@@ -1,3 +1,4 @@
+
 declare const require: {
   context: (
     directory: string,
@@ -9,16 +10,7 @@ declare const require: {
   };
 };
 
-export type BlogPost = {
-  category: string;
-  id: string;
-  title: string;
-  subtitle: string;
-  timestamp: number;
-  content: string;
-};
-
-export const getBlogPosts = async (category) => {
+export const getBlogPosts = async (category: string) => {
   const context = require.context("../content", true, /\.(md|svg)$/);
   const metadataContext = require.context(
     "../content",

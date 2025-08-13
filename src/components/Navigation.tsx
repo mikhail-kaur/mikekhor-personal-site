@@ -18,6 +18,7 @@ import {
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
 import { Link as RouterLink, useNavigate } from "react-router-dom";
+import { NavigationItem } from "../types";
 
 function Navigation() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -33,12 +34,12 @@ function Navigation() {
     setMobileMenuOpen(false);
   };
 
-  const handleNavigation = (path) => {
+  const handleNavigation = (path: string): void => {
     navigate(path);
     handleMobileMenuClose();
   };
 
-  const menuItems = [
+  const menuItems: NavigationItem[] = [
     { label: "Home", path: "/" },
     { label: "Machine Learning", path: "/machinelearning" },
     { label: "A Cappella", path: "/acappella" },
