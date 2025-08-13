@@ -408,7 +408,7 @@ const LandingPage = () => {
             <Button
               variant="contained"
               size="large"
-              onClick={() => navigate("/machinelearning")}
+              onClick={() => navigate("/aiml")}
               sx={{
                 textTransform: "none",
                 py: 2,

@@ -4,6 +4,7 @@ import ReactMarkdown from "react-markdown";
 import rehypeRaw from "rehype-raw";
 import remarkGfm from "remark-gfm";
 import { BlogPost } from "../types";
+import TimeDisplay from "./TimeDisplay";
 
 export default function BlogSinglePage({ post }: { post: BlogPost }) {
   return (
@@ -24,9 +25,11 @@ export default function BlogSinglePage({ post }: { post: BlogPost }) {
         <Typography variant="subtitle1" color="text.secondary" gutterBottom>
           {post.subtitle}
         </Typography>
-        <Typography variant="subtitle2" color="text.secondary" gutterBottom>
-          {new Date(post.timestamp).toLocaleString()}
-        </Typography>
+        <TimeDisplay 
+          timestamp={post.timestamp} 
+          variant="subtitle2"
+          sx={{ mb: 1 }}
+        />
         <div className="markdown-preview">
           <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>
             {post.content}

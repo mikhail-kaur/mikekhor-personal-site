@@ -4,6 +4,7 @@ import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import rehypeRaw from 'rehype-raw';
 import { BlogPost as BlogPostType } from '../types';
+import TimeDisplay from './TimeDisplay';
 
 interface BlogPostProps {
   post?: BlogPostType;
@@ -27,9 +28,11 @@ const BlogPost: React.FC<BlogPostProps> = ({ post }) => {
         <Typography variant="subtitle1" color="text.secondary" gutterBottom>
           {post.subtitle}
         </Typography>
-        <Typography variant="body2" color="text.secondary" sx={{ mb: 4 }}>
-          {new Date(post.date).toLocaleDateString()}
-        </Typography>
+        <TimeDisplay 
+          timestamp={post.timestamp} 
+          variant="body2"
+          sx={{ mb: 4 }}
+        />
         <div className="markdown-content">
           <ReactMarkdown 
             remarkPlugins={[remarkGfm]}

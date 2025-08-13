@@ -41,7 +41,7 @@ function Navigation() {
 
   const menuItems: NavigationItem[] = [
     { label: "Home", path: "/" },
-    { label: "Machine Learning", path: "/machinelearning" },
+    { label: "AI/ML", path: "/aiml" },
     { label: "A Cappella", path: "/acappella" },
   ];
 

@@ -1,6 +1,7 @@
 import React from "react";
 import { CardContent, Typography, Grid, Card } from "@mui/material";
 import { BlogPost } from "../types";
+import TimeDisplay from "./TimeDisplay";
 
 export default function BlogPostScroll({ posts, category, navigate }: { posts: BlogPost[], category: string, navigate: (path: string) => void }) {
   return (
@@ -20,9 +21,11 @@ export default function BlogPostScroll({ posts, category, navigate }: { posts: B
                 <Typography variant="h6" gutterBottom>
                   {post.title}
                 </Typography>
-                <Typography variant="subtitle2" color="text.secondary" gutterBottom>
-                  {new Date(post.timestamp).toLocaleString()}
-                </Typography>
+                <TimeDisplay 
+                  timestamp={post.timestamp} 
+                  variant="subtitle2"
+                  sx={{ mb: 1 }}
+                />
                 <Typography variant="subtitle1" color="text.secondary" gutterBottom>
                   {post.subtitle}
                 </Typography>
